@@ -12,6 +12,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/vimshell.vim'
 "navigation
 NeoBundle 'vim-scripts/IndexedSearch'
 NeoBundle 'scrooloose/nerdtree'
@@ -27,6 +28,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'editorconfig-vim'
+NeoBundle 'jiangmiao/auto-pairs'
 "javascript
 NeoBundle 'millermedeiros/vim-esformatter'
 NeoBundle 'pangloss/vim-javascript'
@@ -178,3 +180,6 @@ nmap g# g#zz
 
 nnoremap <silent> <leader>es :Esformatter<CR>
 vnoremap <silent> <leader>es :EsformatterVisual<CR>
+
+map <Leader>t :VimShellCurrentDir<CR>
+map <Leader>x :VimShellClose<CR>
