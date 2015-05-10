@@ -33,6 +33,7 @@ NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'millermedeiros/vim-esformatter'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'heavenshell/vim-jsdoc'
 "css
 NeoBundle 'wavded/vim-stylus'
 "html
@@ -178,8 +179,10 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
-nnoremap <silent> <leader>es :Esformatter<CR>
-vnoremap <silent> <leader>es :EsformatterVisual<CR>
+nnoremap <silent> <leader>jf :Esformatter<CR>
+vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 
 map <Leader>t :VimShellCurrentDir<CR>
 map <Leader>x :VimShellClose<CR>
+
+map <Leader>jd :JsDoc<CR>
