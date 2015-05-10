@@ -1,0 +1,4 @@
+TAB: menu-complete
+set mark-symlinked-directories on
+set bell-style none
+set completion-ignore-case on

@@ -1,6 +1,6 @@
 SOURCE_DIR = ~/nvim
-NVIMRC = .nvimrc
-DOT_NVIM = .nvim
+FILES:= .nvimrc .nvim .eslintrc .inputrc .bash_profile
+
 
 all: symlinks install_neobundle neobundle
 
@@ -12,5 +12,8 @@ neobundle:
 	nvim +NeoBundleInstall +VimProcInstall
 
 symlinks:
-	@ln -s $(SOURCE_DIR)/$(NVIMRC) ~/$(NVIMRC) && \
-	ln -s $(SOURCE_DIR)/$(DOT_NVIM) ~/$(DOT_NVIM)
+	@$(foreach FILE, $(FILES), ln -s $(SOURCE_DIR)/$(FILE) ~/$(FILE);)
+
+clean:
+	@$(foreach FILE, $(FILES), rm -rf ~/$(FILE);)
+	rm -rf $(SOURCE_DIR)/bundle
