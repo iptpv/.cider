@@ -9,7 +9,7 @@ install_neobundle:
 	git clone https://github.com/Shougo/neobundle.vim $(SOURCE_DIR)/bundle/neobundle.vim
 
 neobundle:
-	nvim +NeoBundleInstall +VimProcInstall
+	nvim +NeoBundleInstall +q
 
 symlinks:
 	@$(foreach FILE, $(FILES), ln -s $(SOURCE_DIR)/$(FILE) ~/$(FILE);)
