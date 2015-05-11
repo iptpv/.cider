@@ -150,14 +150,14 @@ map <Leader>h :Histwin<CR>
 
 nnoremap Y y$
 
-"list of buffers
-map <Leader>l :Unite buffer<CR>
+"list of buffers and recent files
+map <Leader>l :Unite -start-insert -winheight=5 buffer file_rec/async<CR>
 "file explorer
 map <Leader>f :Unite -start-insert file<CR>
 "grep in the current dir
 map <Leader>F :Unite -no-quit -keep-focus grep:.<CR>
 "open Unite
-nmap <Bs> :Unite <CR>i
+nmap <Bs> :Unite<CR>
 
 nmap <Space> <PageDown>
 
@@ -166,6 +166,7 @@ nmap <leader>v :e $MYVIMRC<CR>
 
 "switch splits
 map <Leader>w <C-w>w
+
 "create a new window
 nmap <Leader><left>  :leftabove  vnew<CR>
 nmap <Leader><right> :rightbelow vnew<CR>
@@ -182,9 +183,14 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+"shortcut for :%s//
+nnoremap <leader>s :<C-u>%s//<left>
+vnoremap <leader>s :s//<left>
+
 map <Leader>t :VimShellCurrentDir<CR>
 map <Leader>x :VimShellClose<CR>
 
+"js
 nnoremap <silent> <leader>jf :Esformatter<CR>
 vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 map <Leader>jd :JsDoc<CR>
