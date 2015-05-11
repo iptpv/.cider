@@ -1,10 +1,11 @@
 set nocompatible
 filetype off
+let s:SOURCE_DIR_BUNDLE = "~/nvim/bundle/"
 
 
 "Neobundle
-set runtimepath+=~/nvim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/nvim/bundle/'))
+let &runtimepath.=','.escape(expand(SOURCE_DIR_BUNDLE.'neobundle.vim/'), '\,')
+call neobundle#begin(expand(SOURCE_DIR_BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "interface
@@ -88,7 +89,7 @@ set clipboard=unnamed
 
 "NeoBundles configs
 "interface
-let g:airline_theme="luna"
+let g:airline_theme = "luna"
 colors luna-term
 "navigation
 let g:unite_split_rule = "botright"
@@ -96,10 +97,11 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 "snippets
 let g:neocomplcache_enable_at_startup = 1
+let g:neosnippet#snippets_directory = SOURCE_DIR_BUNDLE.'vim-snippets/snippets'
 "code
 "syntastic
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_enable_signs=1
+let g:syntastic_enable_signs = 1
 
 
 "Functions
@@ -151,9 +153,9 @@ map <Leader>h :Histwin<CR>
 nnoremap Y y$
 
 "list of buffers and recent files
-map <Leader>l :Unite -start-insert -winheight=5 buffer file_rec/async<CR>
+map <Leader>l :Unite -winheight=5 buffer file_rec/async<CR>
 "file explorer
-map <Leader>f :Unite -start-insert file<CR>
+map <Leader>f :Unite file<CR>
 "grep in the current dir
 map <Leader>F :Unite -no-quit -keep-focus grep:.<CR>
 "open Unite
@@ -184,9 +186,10 @@ nmap g* g*zz
 nmap g# g#zz
 
 "shortcut for :%s//
-nnoremap <leader>s :<C-u>%s//<left>
+nnoremap <leader>s :%s/<C-r><C-w>//<left>
 vnoremap <leader>s :s//<left>
 
+"vimshell
 map <Leader>t :VimShellCurrentDir<CR>
 map <Leader>x :VimShellClose<CR>
 
@@ -195,7 +198,7 @@ nnoremap <silent> <leader>jf :Esformatter<CR>
 vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 map <Leader>jd :JsDoc<CR>
 
-"tab for snippets
+"autocomplete snippets
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: pumvisible() ? "\<C-n>" : "\<TAB>"
