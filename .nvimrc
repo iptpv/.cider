@@ -1,6 +1,6 @@
 set nocompatible
 filetype off
-let s:SOURCE_DIR_BUNDLE = "~/nvim/bundle/"
+let g:SOURCE_DIR_BUNDLE = "~/nvim/bundle/"
 
 
 "Neobundle
