@@ -15,10 +15,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 "navigation
 NeoBundle 'vim-scripts/IndexedSearch'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'chrisbra/histwin.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-qfreplace'
 "snippets
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
@@ -91,13 +91,6 @@ set clipboard=unnamed
 let g:airline_theme="luna"
 colors luna-term
 "navigation
-"nerdtree
-nmap <Bs> :NERDTreeToggle<CR>
-let NERDTreeChDirMode=2
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
-"unite
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
@@ -121,10 +114,6 @@ set mouse=
       echo "Mouse usage enabled"
     endif
   endfunction
-"autoreload .nvimrc
-if has("autocmd")
-  autocmd! bufwritepost .nvimrc source $MYVIMRC
-endif
 function! <SID>StripTrailingWhitespaces()
   let l = line(".")
   let c = col(".")
@@ -134,42 +123,56 @@ endfunction
 
 
 "File events
-"auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h
 "save last cursor position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "automatically clean trailing whitespaces on save
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
+"autoreload .nvimrc
+if has("autocmd")
+  autocmd! bufwritepost .nvimrc source $MYVIMRC
+endif
 
 
 "Hotkeys
 let mapleader = ","
 
+"toggle mouse support
 nnoremap <leader>m :call ToggleMouse()<CR>
 
+"clear search highlight
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 
 vnoremap < <gv
 vnoremap > >gv
 
+"open local file history
 map <Leader>h :Histwin<CR>
 
 nnoremap Y y$
 
+"list of buffers
 map <Leader>l :Unite buffer<CR>
-map <Leader>f :Unite -start-insert file_rec/async<CR>
-map <Leader>F :Unite grep:.<CR>
+"file explorer
+map <Leader>f :Unite -start-insert file<CR>
+"grep in the current dir
+map <Leader>F :Unite -no-quit -keep-focus grep:.<CR>
+"open Unite
+nmap <Bs> :Unite <CR>i
 
 nmap <Space> <PageDown>
 
+"open .nvimrc
 nmap <leader>v :e $MYVIMRC<CR>
 
+"switch splits
 map <Leader>w <C-w>w
+"create a new window
 nmap <Leader><left>  :leftabove  vnew<CR>
 nmap <Leader><right> :rightbelow vnew<CR>
 nmap <Leader><up>    :leftabove  new<CR>
 nmap <Leader><down>  :rightbelow new<CR>
 
+"save file with sudo
 command! W exec 'w !sudo tee % > /dev/null' | e!
 
 nmap n nzz
@@ -179,10 +182,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
-nnoremap <silent> <leader>jf :Esformatter<CR>
-vnoremap <silent> <leader>jf :EsformatterVisual<CR>
-
 map <Leader>t :VimShellCurrentDir<CR>
 map <Leader>x :VimShellClose<CR>
 
+nnoremap <silent> <leader>jf :Esformatter<CR>
+vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 map <Leader>jd :JsDoc<CR>
