@@ -33,19 +33,24 @@ alias ..='cd ..'
 alias ls='ls -G'
 alias rm='rm -i'
 
+# default editor
+alias e='nvim'
+
 # simple static server
 alias server='python -m CGIHTTPServer'
 
 # show current git branch
-git_branch() {
-    git branch --no-color 2> /dev/null | \
-        awk -v "clrp=$txtpur" -v "clrr=$txtrst" \
-            '{ print clrp "[" $2 clrr"]"}'
+parse_git_branch() {
+
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+
 }
-PS1="\$@\W\$(git_branch)∑ "
+
+export PS1="\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] 🐰  "
 
 # homebrew
 export PATH=/usr/local/bin:$PATH
+export PATH=/Users/IPotapov/homebrew/bin:$PATH
 
 # nodejs
 PATH=./node_modules/.bin:$PATH

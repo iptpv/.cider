@@ -55,7 +55,7 @@ call neobundle#end()
 "Editor config
 filetype plugin indent on
 syntax enable
-set number
+set nonumber
 set undofile
 set undodir=/tmp
 set encoding=utf-8
@@ -159,12 +159,16 @@ map <Leader>h :Histwin<CR>
 
 nnoremap Y y$
 
-"list of buffers and recent files
-map <Leader>l :Unite -winheight=5 buffer file_rec/async<CR>
+"list of buffers
+map <Leader>b :Unite -winheight=10 -auto-preview buffer<CR>
+"list of recent files
+map <Leader>l :Unite -winheight=10 -auto-preview file_rec/async<CR>
 "file explorer
-map <Leader>f :Unite file<CR>
+map <Leader>f :Unite -winheight=10 file<CR>
 "grep in the current dir
 map <Leader>F :Unite -no-quit -keep-focus grep:.<CR>
+"paste with history
+map <Leader>r :Unite register<CR>
 "open Unite
 nmap <Bs> :Unite<CR>
 
