@@ -14,6 +14,7 @@ NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 "navigation
 NeoBundle 'vim-scripts/IndexedSearch'
 NeoBundle 'chrisbra/histwin.vim'
@@ -102,6 +103,10 @@ colors luna-term
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_enable_auto_cd = 1
 "snippets
 let g:neocomplcache_enable_at_startup = 1
 let g:neosnippet#snippets_directory = SOURCE_DIR_BUNDLE.'vim-snippets/snippets'
@@ -160,17 +165,15 @@ map <Leader>h :Histwin<CR>
 nnoremap Y y$
 
 "list of buffers
-map <Leader>b :Unite -winheight=10 -auto-preview buffer<CR>
-"list of recent files
-map <Leader>l :Unite -winheight=10 -auto-preview file_rec/async<CR>
-"file explorer
-map <Leader>f :Unite -winheight=10 file<CR>
-"grep in the current dir
-map <Leader>F :Unite -no-quit -keep-focus grep:.<CR>
+map <Leader>l :Unite buffer<CR>
+"search file
+map <Leader>f :Unite -auto-preview -start-insert file_rec/async<CR>
+"grep
+map <Leader>g :Unite -no-quit -keep-focus grep:.<CR>
 "paste with history
 map <Leader>r :Unite register<CR>
-"open Unite
-nmap <Bs> :Unite<CR>
+"open Vimfiler
+nmap <Bs> :VimFilerExplorer<CR>
 
 nmap <Space> <PageDown>
 
