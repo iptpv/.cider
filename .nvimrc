@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 let g:SOURCE_DIR_BUNDLE = "~/nvim/bundle/"
 
@@ -13,9 +12,9 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/vimfiler.vim'
 "navigation
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'vim-scripts/IndexedSearch'
 NeoBundle 'chrisbra/histwin.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -26,14 +25,13 @@ NeoBundle 'Shougo/vimproc.vim', {
 		\     'unix' : 'make -f make_unix.mak',
 		\    },
 		\ }
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-qfreplace'
-"snippets
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
 "code
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.sh'
+        \ }
+     \ }
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'editorconfig-vim'
@@ -43,6 +41,7 @@ NeoBundle 'millermedeiros/vim-esformatter'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'heavenshell/vim-jsdoc'
+NeoBundle 'marijnh/tern_for_vim'
 "css
 NeoBundle 'wavded/vim-stylus'
 "html
@@ -99,22 +98,20 @@ set clipboard=unnamed
 "interface
 let g:airline_theme = "luna"
 colors luna-term
-"navigation
+"unite
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+let g:unite_toggle = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy', 'matcher_project_files'])
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_enable_auto_cd = 1
-"snippets
-let g:neocomplcache_enable_at_startup = 1
-let g:neosnippet#snippets_directory = SOURCE_DIR_BUNDLE.'vim-snippets/snippets'
-"code
+"codecomplete
+let g:ycm_add_preview_to_completeopt = 1
 "syntastic
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_enable_signs = 1
-
 
 "Functions
 "toggle mouse support
@@ -166,8 +163,8 @@ nnoremap Y y$
 
 "list of buffers
 map <Leader>l :Unite buffer<CR>
-"search file
-map <Leader>f :Unite -auto-preview -start-insert file_rec/async<CR>
+"search file in current git repo
+map <Leader>f :Unite -start-insert file_rec/git<CR>
 "grep
 map <Leader>g :Unite -no-quit -keep-focus grep:.<CR>
 "paste with history
@@ -203,19 +200,7 @@ nmap g# g#zz
 nnoremap <leader>s :%s/<C-r><C-w>//<left>
 vnoremap <leader>s :s//<left>
 
-"vimshell
-map <Leader>t :VimShellCurrentDir<CR>
-map <Leader>x :VimShellClose<CR>
-
 "js
 nnoremap <silent> <leader>jf :Esformatter<CR>
 vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 map <Leader>jd :JsDoc<CR>
-
-"autocomplete snippets
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
