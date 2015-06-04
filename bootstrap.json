@@ -8,10 +8,11 @@
         "spectacle",
         "the-unarchiver",
         "skype",
-        "transmission",
         "iterm2",
         "virtualbox",
-        "sketch"
+        "sketch",
+        "transmission",
+        "serviio"
     ],
     "formulas": [
         "brew-cask",
@@ -20,7 +21,7 @@
         "git",
         "tig",
         "ccat",
-        "nvm"
+        "node"
     ],
     "symlinks": {
         ".*": "~"

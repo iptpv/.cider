@@ -12,6 +12,8 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mhinz/vim-startify'
+NeoBundle 'airblade/vim-rooter'
 "navigation
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
