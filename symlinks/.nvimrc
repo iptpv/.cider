@@ -1,5 +1,5 @@
 filetype off
-let g:SOURCE_DIR_BUNDLE = "~/nvim/bundle/"
+let g:SOURCE_DIR_BUNDLE = "~/.nvim/bundle/"
 
 
 "Neobundle
@@ -15,8 +15,6 @@ NeoBundle 'tpope/vim-fugitive'
 "navigation
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'vim-scripts/IndexedSearch'
-NeoBundle 'chrisbra/histwin.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 		\ 'build' : {
 		\     'windows' : 'tools\\update-dll-mingw',
@@ -37,16 +35,18 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'editorconfig-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 "javascript
-NeoBundle 'millermedeiros/vim-esformatter'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'marijnh/tern_for_vim'
 "css
 NeoBundle 'wavded/vim-stylus'
 "html
 NeoBundle 'othree/html5.vim'
 NeoBundle "mattn/emmet-vim"
+"other
+NeoBundle 'tpope/vim-projectionist'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-fireplace'
 
 NeoBundleCheck
 call neobundle#end()
@@ -156,9 +156,6 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 vnoremap < <gv
 vnoremap > >gv
 
-"open local file history
-map <Leader>h :Histwin<CR>
-
 nnoremap Y y$
 
 "list of buffers
@@ -201,6 +198,7 @@ nnoremap <leader>s :%s/<C-r><C-w>//<left>
 vnoremap <leader>s :s//<left>
 
 "js
-nnoremap <silent> <leader>jf :Esformatter<CR>
-vnoremap <silent> <leader>jf :EsformatterVisual<CR>
 map <Leader>jd :JsDoc<CR>
+
+"clojure
+map <Leader>c :Eval<CR>

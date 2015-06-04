@@ -1,0 +1,32 @@
+{
+    "after-scripts": [
+        "brew linkapps",
+        "make"
+    ],
+    "casks": [
+        "google-chrome",
+        "spectacle",
+        "the-unarchiver",
+        "skype",
+        "transmission",
+        "iterm2",
+        "virtualbox",
+        "sketch"
+    ],
+    "formulas": [
+        "brew-cask",
+        "neovim --HEAD",
+        "ag",
+        "git",
+        "tig",
+        "ccat",
+        "nvm"
+    ],
+    "symlinks": {
+        ".*": "~"
+    },
+    "taps": [
+        "caskroom/cask",
+        "neovim/homebrew-neovim"
+    ]
+}

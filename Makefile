@@ -1,8 +1,6 @@
-SOURCE_DIR = ~/nvim
-FILES:= .nvimrc .nvim .eslintrc .inputrc .bash_profile
+SOURCE_DIR = ~/.nvim
 
-
-all: symlinks install_neobundle neobundle
+all: install_neobundle neobundle ycm
 
 install_neobundle:
 	mkdir -p $(SOURCE_DIR)/bundle
@@ -11,9 +9,6 @@ install_neobundle:
 neobundle:
 	nvim +NeoBundleInstall +q
 
-symlinks:
-	@$(foreach FILE, $(FILES), ln -s $(SOURCE_DIR)/$(FILE) ~/$(FILE);)
-
-clean:
-	@$(foreach FILE, $(FILES), rm -rf ~/$(FILE);)
-	rm -rf $(SOURCE_DIR)/bundle
+ycm:
+	cd $(SOURCE_DIR)/bundle/YouCompleteMe && git submodule update --init --recursive
+	cd $(SOURCE_DIR)/bundle/YouCompleteMe && ./install.sh
