@@ -1,10 +1,15 @@
 {
+    "before-scripts": [
+        "brew install caskroom/cask/brew-cask"
+    ],
     "after-scripts": [
         "brew linkapps",
-        "make"
+        "make",
+        "open http://dev.modern.ie/tools/vms/"
     ],
     "casks": [
         "google-chrome",
+        "firefox",
         "spectacle",
         "the-unarchiver",
         "skype",
@@ -12,10 +17,10 @@
         "virtualbox",
         "sketch",
         "transmission",
-        "serviio"
+        "serviio",
+        "nosleep"
     ],
     "formulas": [
-        "brew-cask",
         "neovim --HEAD",
         "ag",
         "git",
@@ -27,7 +32,6 @@
         ".*": "~"
     },
     "taps": [
-        "caskroom/cask",
         "neovim/homebrew-neovim"
     ]
 }
