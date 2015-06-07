@@ -7,14 +7,9 @@ let &runtimepath.=','.escape(expand(SOURCE_DIR_BUNDLE.'neobundle.vim/'), '\,')
 call neobundle#begin(expand(SOURCE_DIR_BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-"interface
 NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'airblade/vim-rooter'
-"navigation
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -26,16 +21,14 @@ NeoBundle 'Shougo/vimproc.vim', {
 		\    },
 		\ }
 NeoBundle 'thinca/vim-qfreplace'
-"code
-NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build'      : {
-        \ 'mac'     : './install.sh'
-        \ }
-     \ }
+NeoBundle 'airblade/vim-rooter'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'editorconfig-vim'
 NeoBundle 'jiangmiao/auto-pairs'
+
 "javascript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
@@ -45,10 +38,7 @@ NeoBundle 'wavded/vim-stylus'
 "html
 NeoBundle 'othree/html5.vim'
 NeoBundle "mattn/emmet-vim"
-"other
-NeoBundle 'tpope/vim-projectionist'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'digitaltoad/vim-jade'
 
 NeoBundleCheck
 call neobundle#end()
@@ -97,7 +87,7 @@ set clipboard=unnamed
 
 
 "NeoBundles configs
-"interface
+"colors
 let g:airline_theme = "luna"
 colors luna-term
 "unite
@@ -105,11 +95,12 @@ let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 let g:unite_toggle = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy', 'matcher_project_files'])
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"vimfiler
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_enable_auto_cd = 1
-"codecomplete
+"ycm
 let g:ycm_add_preview_to_completeopt = 1
 "syntastic
 let g:syntastic_javascript_checkers = ['eslint']
@@ -163,13 +154,13 @@ nnoremap Y y$
 "list of buffers
 map <Leader>l :Unite buffer<CR>
 "search file in current git repo
-map <Leader>f :Unite -start-insert file_rec/git<CR>
+map <Leader>f :Unite -start-insert file_rec/async<CR>
 "grep
 map <Leader>g :Unite -no-quit -keep-focus grep:.<CR>
 "paste with history
 map <Leader>r :Unite register<CR>
 "open Vimfiler
-nmap <Bs> :VimFilerExplorer<CR>
+map <Leader>e :VimFilerExplorer<CR>
 
 nmap <Space> <PageDown>
 
@@ -177,7 +168,7 @@ nmap <Space> <PageDown>
 nmap <leader>v :e $MYVIMRC<CR>
 
 "switch splits
-map <Leader>w <C-w>w
+map  <Leader>w  <C-w>
 
 "create a new window
 nmap <Leader><left>  :leftabove  vnew<CR>
@@ -201,6 +192,3 @@ vnoremap <leader>s :s//<left>
 
 "js
 map <Leader>jd :JsDoc<CR>
-
-"clojure
-map <Leader>c :Eval<CR>

@@ -9,16 +9,17 @@
     ],
     "casks": [
         "google-chrome",
-        "firefox",
+        "nosleep",
         "spectacle",
         "the-unarchiver",
         "skype",
         "iterm2",
         "virtualbox",
         "sketch",
+        "firefox",
+        "genymotion",
         "transmission",
-        "serviio",
-        "nosleep"
+        "serviio"
     ],
     "formulas": [
         "neovim --HEAD",
