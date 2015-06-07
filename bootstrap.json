@@ -23,6 +23,8 @@
     ],
     "formulas": [
         "neovim --HEAD",
+        "bash_completion",
+        "fpp",
         "ag",
         "git",
         "tig",
