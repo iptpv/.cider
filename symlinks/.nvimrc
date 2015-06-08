@@ -10,6 +10,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'mhinz/vim-startify'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -167,15 +168,6 @@ nmap <Space> <PageDown>
 "open .nvimrc
 nmap <leader>v :e $MYVIMRC<CR>
 
-"switch splits
-map  <Leader>w  <C-w>
-
-"create a new window
-nmap <Leader><left>  :leftabove  vnew<CR>
-nmap <Leader><right> :rightbelow vnew<CR>
-nmap <Leader><up>    :leftabove  new<CR>
-nmap <Leader><down>  :rightbelow new<CR>
-
 "save file with sudo
 command! W exec 'w !sudo tee % > /dev/null' | e!
 
@@ -192,3 +184,25 @@ vnoremap <leader>s :s//<left>
 
 "js
 map <Leader>jd :JsDoc<CR>
+
+"open new terminal
+nmap <Leader>t :vsp term://bash --rcfile ~/.bash_profile<CR>i
+
+"normal mode terminal
+tnoremap <Esc> <C-\><C-n>
+
+"awesome windows mapping
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+"create a new window
+nmap <Leader><left>  :leftabove  vnew<CR>
+nmap <Leader><right> :rightbelow vnew<CR>
+nmap <Leader><up>    :leftabove  new<CR>
+nmap <Leader><down>  :rightbelow new<CR>
