@@ -1,11 +1,1 @@
-[user]
-	name = Ivan Potapov
-	email = unclepotap@ya.ru
-[credential]
-	helper = osxkeychain
-[color]
-	ui = auto
-[merge]
-	tool = nvim
-[diff]
-	tool = nvim
+symlinks/.gitconfig
