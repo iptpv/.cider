@@ -8,22 +8,25 @@
         "open http://dev.modern.ie/tools/vms/"
     ],
     "casks": [
+        "qlimagesize",
         "google-chrome",
         "nosleep",
         "spectacle",
         "the-unarchiver",
         "skype",
         "iterm2",
-        "virtualbox",
+        "monu",
         "sketch",
+        "imageoptim",
         "firefox",
+        "virtualbox",
         "genymotion",
         "transmission",
         "serviio"
     ],
     "formulas": [
         "neovim --HEAD",
-        "bash_completion",
+        "bash-completion",
         "fpp",
         "ag",
         "git",

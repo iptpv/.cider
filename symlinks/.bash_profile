@@ -37,6 +37,7 @@ alias .='pwd'
 alias ..='cd ..'
 alias ls='ls -G'
 alias rm='rm -i'
+alias cat='ccat'
 
 # default editor
 alias e='nvim'
