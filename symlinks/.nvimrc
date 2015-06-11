@@ -10,7 +10,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'notpratheek/vim-luna'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'mhinz/vim-startify'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -192,14 +191,10 @@ nmap <Leader>t :vsp term://bash --rcfile ~/.bash_profile<CR>i
 tnoremap <Esc> <C-\><C-n>
 
 "awesome windows mapping
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 "create a new window
 nmap <Leader><left>  :leftabove  vnew<CR>

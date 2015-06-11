@@ -1,7 +1,14 @@
+# homebrew
+export PATH=/usr/local/bin:$PATH
+
+# nodejs
+PATH=./node_modules/.bin:$PATH
+
+export EDITOR=nvim
+
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
-export EDITOR=nvim
 
 # mkdir
 md() { mkdir -p "$@" && cd "$@"; }
@@ -51,9 +58,3 @@ parse_git_branch() {
 }
 
 export PS1="\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] 🐰  "
-
-# homebrew
-export PATH=/usr/local/bin:$PATH
-
-# nodejs
-PATH=./node_modules/.bin:$PATH
