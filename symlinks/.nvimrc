@@ -185,7 +185,8 @@ vnoremap <leader>s :s//<left>
 map <Leader>jd :JsDoc<CR>
 
 "open new terminal
-nmap <Leader>t :vsp term://bash --rcfile ~/.bash_profile<CR>i
+nmap <Leader>t :sp term://bash --rcfile ~/.bash_profile<CR>i
+nmap <Leader>tv :vsp term://bash --rcfile ~/.bash_profile<CR>i
 
 "normal mode terminal
 tnoremap <Esc> <C-\><C-n>
