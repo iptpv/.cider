@@ -31,7 +31,7 @@ NeoBundle 'jiangmiao/auto-pairs'
 
 "javascript
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'othree/yajs.vim'
 NeoBundle 'heavenshell/vim-jsdoc'
 "css
 NeoBundle 'wavded/vim-stylus'

@@ -15,14 +15,15 @@
         "the-unarchiver",
         "skype",
         "iterm2",
-        "monu",
         "sketch",
         "imageoptim",
         "firefox",
         "virtualbox",
         "genymotion",
+        "flickr-uploadr",
         "transmission",
-        "serviio"
+        "serviio",
+        "vagrant"
     ],
     "formulas": [
         "neovim --HEAD",
