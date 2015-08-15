@@ -24,7 +24,8 @@
         "flickr-uploadr",
         "transmission",
         "serviio",
-        "vagrant"
+        "vagrant",
+        "atom"
     ],
     "formulas": [
         "neovim --HEAD",
