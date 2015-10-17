@@ -103,6 +103,10 @@ let g:vimfiler_enable_auto_cd = 1
 "ycm
 let g:ycm_add_preview_to_completeopt = 1
 "syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_enable_signs = 1
 
@@ -154,7 +158,7 @@ nnoremap Y y$
 "list of buffers
 map <Leader>l :Unite buffer<CR>
 "search file in current git repo
-map <Leader>f :Unite -start-insert file_rec/async<CR>
+map <Leader>f :Unite file_rec/async<CR>
 "grep
 map <Leader>g :Unite -no-quit -keep-focus grep:.<CR>
 "paste with history

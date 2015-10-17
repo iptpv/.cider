@@ -5,7 +5,3 @@
 	helper = osxkeychain
 [color]
 	ui = auto
-[merge]
-	tool = nvim
-[diff]
-	tool = nvim
