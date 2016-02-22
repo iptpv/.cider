@@ -4,8 +4,7 @@
     ],
     "after-scripts": [
         "brew linkapps",
-        "make",
-        "open http://dev.modern.ie/tools/vms/"
+        "make"
     ],
     "casks": [
         "qlimagesize",
@@ -25,20 +24,16 @@
         "vagrant",
         "genymotion",
         "vagrant",
-        "atom",
         "sourcetree"
     ],
     "formulas": [
         "neovim --HEAD",
-        "bash-completion",
         "ag",
         "git",
         "ccat",
-        "node"
+        "node",
+        "fish"
     ],
-    "symlinks": {
-        ".*": "~"
-    },
     "taps": [
         "neovim/homebrew-neovim"
     ]
