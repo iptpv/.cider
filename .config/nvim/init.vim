@@ -12,9 +12,11 @@ Plug 'scrooloose/syntastic'
 Plug 'editorconfig-vim'
 
 "navigation
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/greplace.vim'
+Plug 'skwp/greplace.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 
 "javascript
 Plug 'othree/yajs.vim'
@@ -88,15 +90,6 @@ let g:syntastic_enable_signs = 1
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
-"ctrlp
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
 "Functions
 "toggle mouse support
 set mouse=
@@ -117,7 +110,6 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 
-"File muents
 "save last cursor position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "automatically clean trailing whitespaces on save
@@ -127,34 +119,33 @@ if has("autocmd")
   autocmd! bufwritepost .nvimrc source $MYVIMRC
 endif
 
-
 "Hotkeys
 let mapleader = ","
 
 "toggle mouse support
 nnoremap <leader>m :call ToggleMouse()<CR>
 
-"clear search highlight
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-
 vnoremap < <gv
 vnoremap > >gv
-
 nnoremap Y y$
-
 
 "map <leader>e :NERDTreeToggle<CR>
 map <leader>e :NERDTreeToggle<CR>
 
+"fzf - fuzzy finder
+nmap <leader>p :FZF<CR>
+
 "buffers
 map <Tab> :bn<CR>
-map <leader>bp :bp<CR>
-
-nmap <Space> <PageDown>
+map <s-Tab> :bp<CR>
+map <leader>x :bd<CR>
 
 "save file with sudo
 command! W exec 'w !sudo tee % > /dmu/null' | e!
 
+"navigation mapping
+nmap <Space> <PageDown>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 nmap n nzz
 nmap N Nzz
 nmap * *zz
@@ -167,6 +158,8 @@ nnoremap <leader>s :%s/<C-r><C-w>//<left>
 vnoremap <leader>s :s//<left>
 
 "global search and replace
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 nmap <leader>f :Gsearch<CR>
 nmap <leader>r :Greplace
 
@@ -175,3 +168,4 @@ nmap <leader><left>  :leftabove  vnew<CR>
 nmap <leader><right> :rightbelow vnew<CR>
 nmap <leader><up>    :leftabove  new<CR>
 nmap <leader><down>  :rightbelow new<CR>
+

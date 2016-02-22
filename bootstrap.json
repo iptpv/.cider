@@ -32,7 +32,8 @@
         "git",
         "ccat",
         "node",
-        "fish"
+        "fish",
+        "fzf"
     ],
     "taps": [
         "neovim/homebrew-neovim"
