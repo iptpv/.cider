@@ -6,27 +6,28 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
 Plug 'notpratheek/vim-luna'
-Plug 'Shougo/deoplete.nvim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'editorconfig-vim'
 
 "navigation
 Plug 'scrooloose/nerdtree'
-Plug 'skwp/greplace.vim'
+Plug 'dispatch.vim'
+Plug 'wincent/ferret'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 "javascript
 Plug 'othree/yajs.vim'
 "css
-Plug 'wavded/vim-stylus'
+"Plug 'wavded/vim-stylus'
 "html
 Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 "git
 Plug 'tpope/vim-fugitive'
+Plug 'chrisbra/vim-diff-enhanced'
 
 call plug#end()
 
@@ -43,16 +44,16 @@ set title
 set showcmd
 set scrolloff=999
 set wrap
-set colorcolumn=80
-set textwidth=80
+set colorcolumn=120
+set textwidth=120
 set formatoptions-=o
 set linebreak
 set autoindent
 set smartindent
 set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set linespace=1
 set cursorline
 set t_Co=256
@@ -87,8 +88,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_enable_signs = 1
 
-"deoplete
-let g:deoplete#enable_at_startup = 1
 
 "Functions
 "toggle mouse support
@@ -114,9 +113,9 @@ endfunction
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "automatically clean trailing whitespaces on save
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
-"autoreload .nvimrc
+"autoreload .vimrc
 if has("autocmd")
-  autocmd! bufwritepost .nvimrc source $MYVIMRC
+  autocmd! bufwritepost .vimrc source $MYVIMRC
 endif
 
 "Hotkeys
@@ -129,7 +128,6 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap Y y$
 
-"map <leader>e :NERDTreeToggle<CR>
 map <leader>e :NERDTreeToggle<CR>
 
 "fzf - fuzzy finder
@@ -157,15 +155,17 @@ nmap g# g#zz
 nnoremap <leader>s :%s/<C-r><C-w>//<left>
 vnoremap <leader>s :s//<left>
 
-"global search and replace
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
-nmap <leader>f :Gsearch<CR>
-nmap <leader>r :Greplace
-
 "create a new window
 nmap <leader><left>  :leftabove  vnew<CR>
 nmap <leader><right> :rightbelow vnew<CR>
 nmap <leader><up>    :leftabove  new<CR>
 nmap <leader><down>  :rightbelow new<CR>
 
+"ferret
+nmap <leader>r <Plug>(FerretAcks)<C-r><C-w>//<left>
+nmap <leader>f <Plug>(FerretAck)<C-r><C-w>
+
+" started In Diff-Mode set diffexpr (plugin not loaded yet)
+if &diff
+    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+endif

@@ -8,34 +8,30 @@
     ],
     "casks": [
         "qlimagesize",
-        "nosleep",
         "spectacle",
-        "transmission",
         "serviio",
         "the-unarchiver",
         "skype",
-        "slack",
         "iterm2",
-        "sketch",
         "imageoptim",
         "google-chrome",
         "firefox",
         "virtualbox",
         "vagrant",
         "genymotion",
-        "vagrant",
         "sourcetree"
     ],
     "formulas": [
-        "neovim --HEAD",
-        "ag",
+        "vim",
+        "the_silver_searcher",
         "git",
         "ccat",
-        "node",
+        "nvm",
         "fish",
-        "fzf"
+        "fzf",
+        "fpp"
     ],
-    "taps": [
-        "neovim/homebrew-neovim"
-    ]
+    "symlinks": {
+        ".*": "~"
+    }
 }
