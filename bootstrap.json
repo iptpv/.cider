@@ -9,17 +9,13 @@
     "casks": [
         "qlimagesize",
         "spectacle",
-        "serviio",
         "the-unarchiver",
         "skype",
         "iterm2",
         "imageoptim",
         "google-chrome",
         "firefox",
-        "virtualbox",
-        "vagrant",
-        "genymotion",
-        "sourcetree"
+        "visual-studio-code"
     ],
     "formulas": [
         "vim",
